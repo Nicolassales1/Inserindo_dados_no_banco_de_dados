@@ -23,7 +23,7 @@ app.post("/register/save", (req, res)=>{
     `INSERT INTO books (title, pageqty)
     VALUES (' ${title}', ' ${pageqty}')
     `
-    conn.query(query, (error)=>{
+    conn.query(query, (error) => {
         if (error){
             console.log(error)
             return
@@ -38,7 +38,19 @@ app.get("/register", (req, res) =>{
 })
 
 app.get('/', (req, res) =>{
-    res.render("home")
+     const sql = 'SELECT * FROM books'
+
+     conn.query(sql, (error, data) => {
+        if (error){
+            return console.log (error)
+        }
+
+        const books = data
+      
+        res.render("home", {books})
+     })
+
+   
 })
 
 const conn = mysql.createConnection({
