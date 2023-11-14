@@ -1,16 +1,17 @@
 <main>
     <h2>Home</h2>
 
-{{#each books}}
+    {{#each books}}
 
-<div class="book">
-    <h3>
-        titulo:{{this.title}}
+    <div class="book">
+        <h3>
+            titulo:{{this.title}}
+        </h3>
         <p>
             Quantidade de paginas: {{this.pageqty}}
         </p>
-    </h3>
-</div>
+        <a href="/book/{{this.id}}">Ver mais</a>
+    </div>
 
-{{/each}}
+    {{/each}}
 </main>
